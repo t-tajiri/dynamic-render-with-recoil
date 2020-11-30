@@ -1,3 +1,6 @@
 interface Window {
-  initData: object;
+  initData: {
+    title: string,
+    type: string
+  };
 }

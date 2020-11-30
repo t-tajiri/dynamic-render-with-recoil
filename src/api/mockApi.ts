@@ -1,12 +1,40 @@
-export type responseData = {
-  title: string, type: string
-};
-
-export async function getModelFromApi() {
-  let result = {} as responseData;
-  await sleep(3000);
-  result = { title: "maria", type: "input" };
-  return result;
+export type model = {
+  title: string,
+  type: string
 }
 
-const sleep = (time: number) => new Promise(resolve => setTimeout(resolve, time));
+export function getModelFromApi() {
+  return wrapPromise(sleep(3000));
+}
+
+function sleep(time: number) {
+  return new Promise<model>(resolve => setTimeout(() => {
+    resolve(window.initData)
+  }, time));
+}
+
+function wrapPromise<T>(promise: Promise<T>) {
+  let status = "pending";
+  let result: T;
+  const suspender = promise.then(
+    data => {
+      status = "success";
+      result = data;
+    },
+    error => {
+      status = "error";
+      result = error;
+    }
+  );
+  return {
+    read() {
+      if (status === "pending") {
+        throw suspender;
+      } else if (status === "error") {
+        throw result;
+      }
+
+      return result;
+    }
+  };
+}

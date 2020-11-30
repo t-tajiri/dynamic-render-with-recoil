@@ -1,3 +1,10 @@
-export default function Input() {
-  return (<div>this is input tag.</div>);
+import { useGetGlobalModel } from "../states/modelRecoilState";
+
+export function Input() {
+  const model = useGetGlobalModel();
+  return (
+    <div>
+        {JSON.stringify(model.read())}
+    </div>
+  );
 }

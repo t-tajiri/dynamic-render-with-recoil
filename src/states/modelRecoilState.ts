@@ -1,7 +1,11 @@
-import { atom } from "recoil";
-import { responseData } from "../api/mockApi";
+import { atom, useRecoilValue } from "recoil";
+import { getModelFromApi } from "../api/mockApi";
 
-export const modelRecoilState = atom({
+const modelRecoilState = atom({
   key: "modelState",
-  default: {} as responseData
+  default: getModelFromApi()
 });
+
+export function useGetGlobalModel() {
+  return useRecoilValue(modelRecoilState);
+}
