@@ -1,14 +1,9 @@
-export type model = {
-  title: string,
-  type: string
+export function getEmbeddedLayout() {
+  return wrapPromise(getEmbeddedLayoutFromHTML(3000));
 }
 
-export function getModelFromApi() {
-  return wrapPromise(sleep(3000));
-}
-
-function sleep(time: number) {
-  return new Promise<model>(resolve => setTimeout(() => {
+function getEmbeddedLayoutFromHTML(time: number) {
+  return new Promise<Window["initData"]>(resolve => setTimeout(() => {
     resolve(window.initData)
   }, time));
 }
