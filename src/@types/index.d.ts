@@ -14,9 +14,11 @@ type tableGrid = {
 }
 
 type tableTypes = {
-  grid1: string,
-  grid2: string
+  grid1: tableType,
+  grid2: tableType
 }
+
+type tableType = "profile" | "fixed"
 
 type table = {
   table: Array<row>
