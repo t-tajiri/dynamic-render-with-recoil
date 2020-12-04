@@ -1,10 +1,15 @@
-import { LayoutResolver } from "../resolver/LayoutResolver";
+import { useEffect, useState } from "react";
+import { TableLayoutResolver } from "src/resolver/TableLayoutResolver";
 import "./App.css";
 
 export function App() {
+  const [layout, setLayout] = useState({} as Window["layout"]);
+  useEffect(() => {
+    setLayout(window.layout);
+  }, []);
   return (
     <main>
-      <LayoutResolver />
+      <TableLayoutResolver layout={layout} />
     </main>
   );
 }
