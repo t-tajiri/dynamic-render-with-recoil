@@ -6,5 +6,5 @@ export function ProfileTable({ children }: profileTableProps) {
     <div className="profile">
       { children }
     </div>
-  )
+  );
 }

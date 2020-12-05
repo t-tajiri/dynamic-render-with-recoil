@@ -3,25 +3,25 @@ import { ProfileTable } from "../components/profile/ProfileTable";
 import { RowLayoutResolver } from "./RowLayoutResolver";
 
 type tableLayoutResolverProps = {
-  layout: table
+  layout: tableLayout
   tableType: string
 }
 
 export function TableLayoutResolver({ layout, tableType }: Required<tableLayoutResolverProps>) {
-  const rowLayout = useMemo(() => extractTableLayout(layout), [layout]);
+  const rowLayouts = useMemo(() => extractRowLayout(layout), [layout]);
 
   const rows = [] as JSX.Element[];
 
-  rowLayout.forEach(row => {
-    rows.push(<RowLayoutResolver layout={row}/>);
-  })
+  rowLayouts.forEach(rowLayout => {
+    rows.push(<RowLayoutResolver layout={rowLayout}/>);
+  });
 
   return (
     <div>
     {tableType === "profile" &&
       <ProfileTable>
         <>
-          {rows}
+          { rows }
         </>
       </ProfileTable>
     }
@@ -29,10 +29,10 @@ export function TableLayoutResolver({ layout, tableType }: Required<tableLayoutR
   );
 }
 
-function extractTableLayout(layout: table) {
-  const rows = [] as Array<row>;
+function extractRowLayout(layout: tableLayout) {
+  const rows = [] as Array<rowLayout>;
   layout.table.forEach(row => {
-    rows.push(row)
+    rows.push(row);
   });
 
   return rows;

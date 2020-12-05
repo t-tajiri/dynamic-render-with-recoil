@@ -4,13 +4,13 @@ interface Window {
 
 type layout = {
   title: string,
-  tables: tableGrid,
+  tables: tableGridLayout,
   tableTypes: tableTypes
 }
 
-type tableGrid = {
-  grid1: table,
-  grid2: table
+type tableGridLayout = {
+  grid1: tableLayout,
+  grid2: tableLayout
 }
 
 type tableTypes = {
@@ -20,13 +20,13 @@ type tableTypes = {
 
 type tableType = "profile" | "fixed"
 
-type table = {
-  table: Array<row>
+type tableLayout = {
+  table: Array<rowLayout>
 }
 
-type row = Array<column>
+type rowLayout = Array<columnLayout>
 
-type column = {
+type columnLayout = {
     label: string,
     value: string
 }
