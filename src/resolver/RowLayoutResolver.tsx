@@ -10,8 +10,8 @@ export function RowLayoutResolver({ layout }: rowLayoutResolverProps) {
 
   const columns = [] as JSX.Element[];
 
-  columnLayouts.forEach(column => {
-    columns.push(<ColumnLayoutResolver layout={column} />);
+  columnLayouts.forEach((column, columnNo) => {
+    columns.push(<ColumnLayoutResolver layout={column} key={columnNo} />);
   });
 
   return (

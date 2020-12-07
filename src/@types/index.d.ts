@@ -28,5 +28,5 @@ type rowLayout = Array<columnLayout>
 
 type columnLayout = {
     label: string,
-    value: string
+    type: string
 }

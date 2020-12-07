@@ -12,8 +12,8 @@ export function TableLayoutResolver({ layout, tableType }: Required<tableLayoutR
 
   const rows = [] as JSX.Element[];
 
-  rowLayouts.forEach(rowLayout => {
-    rows.push(<RowLayoutResolver layout={rowLayout}/>);
+  rowLayouts.forEach((rowLayout, rowNo) => {
+    rows.push(<RowLayoutResolver layout={rowLayout} key={rowNo} />);
   });
 
   return (

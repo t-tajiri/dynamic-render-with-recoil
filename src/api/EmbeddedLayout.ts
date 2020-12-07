@@ -4,7 +4,7 @@ export function getEmbeddedLayout() {
 
 function getEmbeddedLayoutFromHTML(time: number) {
   return new Promise<Window["layout"]>(resolve => setTimeout(() => {
-    resolve(window.layout)
+    resolve(window.layout);
   }, time));
 }
 
