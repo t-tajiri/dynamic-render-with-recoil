@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import { TableLayoutResolver } from "../resolver/TableLayoutResolver";
-import "./App.css";
 
 export function App() {
   const [layout, setLayout]   = useState({} as Window["layout"]);
@@ -12,7 +11,7 @@ export function App() {
   }, []);
 
   return (
-    <main>
+    <main className="container mx-auto px-4">
       {loading &&
       <>
         <TableLayoutResolver layout={layout.tables.grid1} tableType={layout.tableTypes.grid1} />
