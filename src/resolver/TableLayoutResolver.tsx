@@ -1,5 +1,5 @@
 import { useMemo } from "react";
-import { ProfileTable } from "../components/profile/ProfileTable";
+import { ProfileTableCompound } from "../components/profile/ProfileTableCompound";
 import { RowLayoutResolver } from "./RowLayoutResolver";
 
 type tableLayoutResolverProps = {
@@ -17,15 +17,11 @@ export function TableLayoutResolver({ layout, tableType }: Required<tableLayoutR
   });
 
   return (
-    <div>
-    {tableType === "profile" &&
-      <ProfileTable>
-        <>
-          { rows }
-        </>
-      </ProfileTable>
-    }
-    </div>
+    <ProfileTableCompound tableType={tableType}>
+      <>
+      { rows }
+      </>
+    </ProfileTableCompound>
   );
 }
 
